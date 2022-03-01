@@ -1,0 +1,45 @@
+:root {
+	--skyblue: #69b3ff;
+	--white: #fff;
+	--tn-duration: 0.25s;
+}
+.skyblue {
+	color: var(--skyblue) !important;
+}
+.skyblue-hover {
+	&:hover {
+		color: var(--skyblue) !important;
+	}
+}
+.skyblue-bg {
+	background-color: var(--skyblue) !important;
+}
+.skyblue-bg-hover {
+	transition: background-color var(--tn-duration) ease-in-out 0s;
+	&:hover {
+		background-color: var(--skyblue) !important;
+	}
+}
+.skyblue-border {
+	border: 1px solid var(--skyblue) !important;
+}
+.white {
+	color: var(--white) !important;
+}
+.white-hover {
+	&:hover {
+		color: var(--white) !important;
+	}
+}
+.white-bg {
+	background-color: var(--white) !important;
+}
+.white-bg-hover {
+	transition: background-color var(--tn-duration) ease-in-out 0s;
+	&:hover {
+		background-color: var(--white) !important;
+	}
+}
+.white-border {
+	border: 1px solid var(--white) !important;
+}

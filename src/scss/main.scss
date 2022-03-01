@@ -1,0 +1,57 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "./partial/colors";
+
+body {
+	background-color: #f1f1f1;
+	overflow-x: hidden;
+}
+
+html {
+	height: 2000px;
+	scroll-behavior: smooth;
+}
+
+$easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1); /* easeInOutQuart */
+
+/* 
+= = = = = = = = = = = = 
+Navbar
+= = = = = = = = = = = = 
+*/
+.ls-none {
+	list-style: none;
+}
+nav {
+	z-index: 99;
+	transition: 0.4s $easeInOutQuart 0s;
+	transition-property: width, margin, box-shadow;
+	will-change: width, margin, box-shadow;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	padding: 1.5rem 0;
+	background: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(10px);
+	display: flex;
+	justify-content: space-between;
+}
+
+nav.scrolled {
+	width: calc(100vw - 2rem);
+	margin: 1rem;
+	border-radius: 0.5rem;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-center {
+	display: flex;
+	align-items: center;
+	ul {
+		display: inline-flex;
+	}
+	ul li {
+		color: var(--skyblue);
+		font-weight: 500;
+		padding: 0 0.5rem;
+	}
+}
