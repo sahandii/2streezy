@@ -1,6 +1,10 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "./partial/colors";
 
+:root {
+	--nav-height: initial;
+}
+
 body {
 	background-color: #f1f1f1;
 	overflow-x: hidden;
@@ -22,10 +26,12 @@ Navbar
 	list-style: none;
 }
 nav {
-	z-index: 99;
+	max-height: 72px;
+	z-index: 10;
 	transition: 0.4s $easeInOutQuart 0s;
 	transition-property: width, margin, box-shadow;
 	will-change: width, margin, box-shadow;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -37,10 +43,9 @@ nav {
 }
 
 nav.scrolled {
-	width: calc(100vw - 2rem);
-	margin: 1rem;
+	width: calc(100vw - 4em);
+	margin: 1em 2em 2em;
 	border-radius: 0.5rem;
-	box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-center {

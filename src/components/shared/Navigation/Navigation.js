@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import "react-router";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import { ReactComponent as StreezyLogo } from "../../../images/str-logo.svg";
 import { ReactComponent as SettingsIcon } from "./img/settings.svg";
 // import { ReactComponent as UserIcon } from "./img/user.svg";
-import styled from "styled-components";
 
 export const Navigation = ({ pageOffset }) => {
 	const navEl = useRef();
@@ -30,8 +29,8 @@ export const Navigation = ({ pageOffset }) => {
 		handleScroll();
 	}, [navHeight]);
 	return (
-		<nav ref={navEl} className={"navbar" + (scrolled ? " scrolled" : "")}>
-			<div className="container d-flex justify-content-between align-items-center">
+		<nav ref={navEl} className={"navbar" + (scrolled ? " sscrolled" : "")}>
+			<div className="container-fluid d-flex justify-content-between align-items-center">
 				<div className="navbar-left">
 					<StreezyLogo width="120" height="100%" draggable="false" />
 				</div>

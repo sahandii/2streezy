@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { direction, device } from "../../../assets/breakpoints";
 
 const borderRadius = "0.3em";
 
@@ -13,7 +14,10 @@ export const SplideCSS = styled.div`
 		will-change: opacity, transform;
 		cursor: pointer;
 		width: 100%;
-		max-width: 400px;
+		@media ${direction.minWidth} ${device.tablet} {
+			max-width: 400px;
+		}
+		max-width: 50vw;
 		transform: scale(0.9);
 		opacity: 0.75;
 		border: none !important;
