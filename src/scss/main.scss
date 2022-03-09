@@ -5,14 +5,19 @@
 	--nav-height: initial;
 }
 
+html,
 body {
-	background-color: #f1f1f1;
-	overflow-x: hidden;
+	min-height: 100vh;
 }
 
 html {
-	height: 2000px;
 	scroll-behavior: smooth;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	background-color: #f1f1f1;
+	overflow-x: hidden !important;
 }
 
 $easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1); /* easeInOutQuart */

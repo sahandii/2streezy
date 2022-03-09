@@ -45,7 +45,7 @@ export function SliderComponent({ category, items, title, setActiveItem }) {
 									<div className="title--bar position-absolute bottom-0 zi-1 w-100">
 										<div className="title--container d-flex justify-content-between align-items-center">
 											<h6 className="title fw-normal white m-0 mt-1">
-												{item.original_title} <span className="year-blip white-border rounded p-1 ms-1">{item.release_date.slice(0, 4)}</span>
+												{item.title} <span className="year-blip white-border rounded p-1 ms-1">{item.release_date.slice(0, 4)}</span>
 											</h6>
 											<ArrowRight width="15" height="100%" />
 										</div>

@@ -1,12 +1,14 @@
 :root {
 	--skyblue: #69b3ff;
 	--white: #fff;
-	--tn-duration: 0.25s;
+	--black: #333;
+	--tn-duration: 0.15s;
 }
 .skyblue {
 	color: var(--skyblue) !important;
 }
 .skyblue-hover {
+	transition: color var(--tn-duration) ease-in-out 0s;
 	&:hover {
 		color: var(--skyblue) !important;
 	}
@@ -27,6 +29,7 @@
 	color: var(--white) !important;
 }
 .white-hover {
+	transition: color var(--tn-duration) ease-in-out 0s;
 	&:hover {
 		color: var(--white) !important;
 	}
@@ -42,4 +45,46 @@
 }
 .white-border {
 	border: 1px solid var(--white) !important;
+}
+.black {
+	color: var(--black) !important;
+}
+.black-hover {
+	transition: color var(--tn-duration) ease-in-out 0s;
+	&:hover {
+		color: var(--black) !important;
+	}
+}
+.black-bg {
+	background-color: var(--black) !important;
+}
+.black-bg-hover {
+	transition: background-color var(--tn-duration) ease-in-out 0s;
+	&:hover {
+		background-color: var(--black) !important;
+	}
+}
+.black-border {
+	border: 1px solid var(--black) !important;
+}
+.transparent {
+	color: transparent !important;
+}
+.transparent-hover {
+	transition: color var(--tn-duration) ease-in-out 0s;
+	&:hover {
+		color: transparent !important;
+	}
+}
+.transparent-bg {
+	background-color: transparent !important;
+}
+.transparent-bg-hover {
+	transition: background-color var(--tn-duration) ease-in-out 0s;
+	&:hover {
+		background-color: transparent !important;
+	}
+}
+.transparent-border {
+	border: 1px solid transparent !important;
 }
