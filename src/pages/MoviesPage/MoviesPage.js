@@ -17,14 +17,33 @@ const MoviesPage = ({ activeItem, setActiveItem }) => {
 				category: "popular",
 				url: "https://api.themoviedb.org/3/movie/popular?api_key=47179f260df8d482f7b4ffd06257a9d1&language=en-US",
 			},
+			{
+				category: "genre",
+				url: "https://api.themoviedb.org/3/genre/movie/list?api_key=47179f260df8d482f7b4ffd06257a9d1&language=en-US",
+			},
 		];
+		let genreNames = [];
 		const fetchMovieData = async () => {
 			let requests = urls.map((item) => fetch(item.url).then((response) => response.json()));
 			Promise.all(requests).then((datas) => {
 				datas.forEach((data, i) => {
-					const obj = {};
+					let obj = {};
 					let name = urls[i].category;
 					obj[name] = data;
+
+					if (data.genres) {
+						genreNames = data.genres;
+					}
+
+					if (data.results) {
+						console.log(genreNames);
+						// console.log(data.results);
+						data.results.forEach((movie, index, array) => {
+							movie.genre_names = ["Drama", "Adventure"];
+							// console.log(movie.title, movie.genre_ids, movie.genre_names);
+						});
+					}
+
 					setMovieData((prevState) => ({
 						...prevState,
 						...obj,

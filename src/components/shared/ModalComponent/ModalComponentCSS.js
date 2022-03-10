@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { direction, device } from "../../../assets/breakpoints";
+import BookmarkSymbol from "../../../images/symbols/bookmark.svg";
 
 // variables
 // const borderRadius = "0.3em";
@@ -42,7 +43,10 @@ export const ModalComponentCSS = styled.div`
 		}
 	}
 	.bookmark-it{
-		background-image:url('./images/symbols/bookmark.svg');
+		width:2em;
+		height:1.5em;
+		background: transparent url(${BookmarkSymbol}) no-repeat center;
+		background-size:contain;
 	}
 	.close-button{
 		border-radius:99em;
@@ -101,6 +105,7 @@ export const ModalComponentCSS = styled.div`
 		font-size:.85rem;
 	}
 	.item--description {
+		font-size:.85rem;
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;

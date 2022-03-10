@@ -1,8 +1,7 @@
 import { ModalComponentCSS } from "./ModalComponentCSS";
 import { useRef, useState, useEffect } from "react";
-import { ReactComponent as BookmarkIcon } from "../../../images/symbols/bookmark.svg";
 
-export const ModalComponent = ({ setActiveItem, activeItem }) => {
+export const ModalComponent = ({ activeItem, setActiveItem }) => {
 	useEffect(() => {
 		return () => {};
 	}, []);
@@ -19,7 +18,7 @@ export const ModalComponent = ({ setActiveItem, activeItem }) => {
 							<div style={{ backgroundImage: `url('https://image.tmdb.org/t/p/w1280${activeItem.backdrop_path}')` }} className="backdrop-header container-fluid py-4 px-5">
 								<div className="modal-content">
 									<header className="row header-nav">
-										<div className="header-left col-6">
+										<div className="d-flex align-items-center header-left col-6">
 											<button
 												onClick={() => {
 													removeActiveItem();
@@ -29,18 +28,13 @@ export const ModalComponent = ({ setActiveItem, activeItem }) => {
 												&#10005;
 											</button>
 										</div>
-										{/* <div className="header-center col-4">
-											<h4 className="m-0 fw-bold white text-center">{activeItem.title}</h4>
-										</div> */}
-										<div className="header-right col-6 text-end">
+										<div className="d-flex align-items-center justify-content-end header-right col-6 text-end">
 											<button
 												onClick={() => {
 													removeActiveItem();
 												}}
-												className="border-0"
-											>
-												Like
-											</button>
+												className="bookmark-it transparent-bg border-0"
+											></button>
 										</div>
 									</header>
 									<div className="row py-5">
@@ -54,14 +48,15 @@ export const ModalComponent = ({ setActiveItem, activeItem }) => {
 												<div className="ps-md-5 col-md-8 col-lg-9">
 													<div className="d-flex">
 														<h2 className="active-item--title w-bold white">{activeItem.title}</h2>
-														<button class="bookmark-it transparent-bg border-0"></button>
 													</div>
-													<div className="details-bar">
+													<div className="details-bar white" style={{ opacity: 0.75 }}>
 														<span className="white year-blip white-border rounded p-2 py-1">{activeItem.release_date.slice(0, 4)}</span>
+														<span className="mx-2">|</span>
+														<span>{activeItem.genre_ids}</span>
 													</div>
 													<p className="item--description white">{activeItem.overview}</p>
 													<div className="my-4">
-														<button>Watch trailer</button>
+														<button className="transparent-bg white-border white rounded p-2 px-3 black-hover white-bg-hover">Watch trailer</button>
 													</div>
 												</div>
 											</div>
