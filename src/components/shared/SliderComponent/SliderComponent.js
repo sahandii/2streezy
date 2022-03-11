@@ -14,7 +14,7 @@ export function SliderComponent({ category, items, title, setActiveItem }) {
 	};
 	return (
 		<SplideCSS ref={splideCarousel} className="mt-4">
-			<div className="container-fluid px-5">
+			<div className="container-fluid px-3 px-lg-5">
 				<h4 className="fw-light category-label pt-4 pb-3">{title}</h4>
 			</div>
 			<Splide

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import "react-router";
-// import { NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as StreezyLogo } from "../../../images/str-logo.svg";
 import { ReactComponent as SettingsIcon } from "./img/settings.svg";
 // import { ReactComponent as UserIcon } from "./img/user.svg";
@@ -10,6 +10,7 @@ export const Navigation = ({ pageOffset }) => {
 	const [scrolled, setScrolled] = useState(false);
 	const [navHeight, setNavHeight] = useState();
 	// Component on load
+	const location = useLocation();
 	useEffect(() => {
 		const handleScroll = () => {
 			// Register scroll event when Navbar gets initialized
@@ -32,7 +33,9 @@ export const Navigation = ({ pageOffset }) => {
 		<nav ref={navEl} className={"navbar" + (scrolled ? " sscrolled" : "")}>
 			<div className="container-fluid d-flex justify-content-between align-items-center">
 				<div className="navbar-left">
-					<StreezyLogo width="120" height="100%" draggable="false" />
+					<Link style={location.pathname === "/" ? { pointerEvents: "none" } : { pointerEvents: "auto" }} to="/">
+						<StreezyLogo width="120" height="100%" draggable="false" />
+					</Link>
 				</div>
 				<div className="navbar-center">
 					{/* <ul className="m-0 p-0 ls-none">
@@ -43,7 +46,9 @@ export const Navigation = ({ pageOffset }) => {
 				<div className="navbar-right">
 					<ul className="m-0 p-0 ls-none">
 						<li>
-							<SettingsIcon draggable="false" />
+							<NavLink to="/settings">
+								<SettingsIcon draggable="false" />
+							</NavLink>
 						</li>
 					</ul>
 				</div>

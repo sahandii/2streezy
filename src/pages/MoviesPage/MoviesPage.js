@@ -8,6 +8,7 @@ const MoviesPage = ({ activeItem, setActiveItem }) => {
 	// TMDB API load
 	const [movieData, setMovieData] = useState({});
 	useEffect(() => {
+		let genres;
 		const urls = [
 			{
 				category: "upcoming",
@@ -22,7 +23,6 @@ const MoviesPage = ({ activeItem, setActiveItem }) => {
 				url: "https://api.themoviedb.org/3/genre/movie/list?api_key=47179f260df8d482f7b4ffd06257a9d1&language=en-US",
 			},
 		];
-		let genreNames = [];
 		const fetchMovieData = async () => {
 			let requests = urls.map((item) => fetch(item.url).then((response) => response.json()));
 			Promise.all(requests).then((datas) => {
@@ -30,24 +30,33 @@ const MoviesPage = ({ activeItem, setActiveItem }) => {
 					let obj = {};
 					let name = urls[i].category;
 					obj[name] = data;
-
-					if (data.genres) {
-						genreNames = data.genres;
-					}
-
-					if (data.results) {
-						console.log(genreNames);
-						// console.log(data.results);
-						data.results.forEach((movie, index, array) => {
-							movie.genre_names = ["Drama", "Adventure"];
-							// console.log(movie.title, movie.genre_ids, movie.genre_names);
-						});
-					}
-
-					setMovieData((prevState) => ({
-						...prevState,
-						...obj,
-					}));
+					const getGenres = async () => {
+						if (data.genres) {
+							genres = data.genres;
+						}
+					};
+					getGenres().then((value) => {
+						if (data.results) {
+							// console.log(data.results);
+							data.results.forEach((movie, index, array) => {
+								let genreNames = [];
+								movie.genre_ids.forEach((genreId, index, array) => {
+									for (let i = 0; i < genres.length; i++) {
+										const element = genres[i];
+										if (genreId === element.id) {
+											genreNames.push(element.name);
+										}
+									}
+								});
+								movie.genre_names = genreNames;
+								// console.log(movie.title, movie.genre_names);
+							});
+							setMovieData((prevState) => ({
+								...prevState,
+								...obj,
+							}));
+						}
+					});
 				});
 			});
 		};

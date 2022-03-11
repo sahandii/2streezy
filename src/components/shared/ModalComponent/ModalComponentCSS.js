@@ -28,7 +28,16 @@ export const ModalComponentCSS = styled.div`
 		position:relative;
 		z-index:2;
 	}
+	.item-selected .poster-wrapper{
+		transform:none;
+		opacity:1;
+	}
 	.poster-wrapper {
+		transform:translateY(-1em);
+		transition: .5s var(--ease-out-quint) .25s;
+		transition-property: transform, opacity;
+		will-change: transform, opacity;
+		opacity:0;
 		border-radius: calc(.25rem + .5vw);
 		overflow:hidden;
 		border:1px solid rgba(255, 255, 255, .15);
@@ -53,21 +62,29 @@ export const ModalComponentCSS = styled.div`
 		width:40px;
 		height:40px;
 	}
+	@keyframes fadeInBackdrop {
+		from {
+			background-color: rgba(0, 0, 0, .9)
+		}
+		to {
+			background-color: rgba(0, 0, 0, .6)
+		}
+	}
 	.modal-component__wrapper .backdrop-header{
 		position:relative;
 		@media ${direction.maxWidth} ${device.tablet} {
 			height:100vh;
 		}
 		&:after {
+			animation: fadeInBackdrop 3s linear 0s both;
 			content: "";
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: rgba(0,0,0, .6);
 			z-index: 0;
-			backdrop-filter:blur(50px);
+			backdrop-filter:blur(40px);
 		}
 		background-size:cover;
 		background-repeat:no-repeat;
@@ -105,7 +122,8 @@ export const ModalComponentCSS = styled.div`
 		font-size:.85rem;
 	}
 	.item--description {
-		font-size:.85rem;
+		font-weight:500;
+		font-size:.95rem;
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;

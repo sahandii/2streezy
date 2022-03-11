@@ -3,6 +3,7 @@ import "react-router";
 import { useState } from "react";
 import { Navigation } from "./components/shared/Navigation/Navigation";
 import MoviesPage from "./pages/MoviesPage/MoviesPage";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 
@@ -22,11 +23,12 @@ const App = () => {
 	return (
 		<>
 			<GlobalStyles />
-			<Navigation pageOffset={{ set: setPageOffset }} />
 			<div style={{ paddingTop: pageOffset }} className="wrapper">
 				<BrowserRouter>
+					<Navigation pageOffset={{ set: setPageOffset }} />
 					<Routes>
 						<Route path="/" element={<MoviesPage activeItem={activeItem} setActiveItem={setActiveItem} />} />
+						<Route path="/settings" element={<SettingsPage />} />
 					</Routes>
 				</BrowserRouter>
 			</div>

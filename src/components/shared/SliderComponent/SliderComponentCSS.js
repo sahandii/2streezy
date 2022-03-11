@@ -14,10 +14,10 @@ export const SplideCSS = styled.div`
 		will-change: opacity, transform;
 		cursor: pointer;
 		width: 100%;
-		@media ${direction.minWidth} ${device.tablet} {
+		@media ${direction.minWidth} ${device.mobile} {
 			max-width: 400px;
 		}
-		max-width: 50vw;
+		max-width: 75vw;
 		transform: scale(0.9);
 		opacity: 0.75;
 		border: none !important;
@@ -73,6 +73,12 @@ export const SplideCSS = styled.div`
 	}
 	.splide__slide.is-active .title--container h6 {
 		animation: slideUp 0.25s cubic-bezier(0.77, 0, 0.175, 1) both 0.05s;
+	}
+	.title--container h6 {
+		@media ${direction.minWidth} ${device.tablet} {
+			font-size: inherit;
+		}
+		font-size: calc(0.5rem + 1vw);
 	}
 	.year-blip {
 		transform: scale(0.8);
