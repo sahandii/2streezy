@@ -3,12 +3,43 @@ import { useState, useEffect } from "react";
 
 export const ModalComponent = ({ activeItem, setActiveItem }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [readmore, setReadmore] = useState(false);
+	const [itemLogo, setItemLogo] = useState();
 	useEffect(() => {
 		activeItem ? setIsOpen(true) : setIsOpen(false);
+		if (activeItem) {
+			const urls = [
+				{
+					url: `https://api.themoviedb.org/3/movie/${activeItem.id}/images?&language=en-US&append_to_response=images&include_image_language=null,en&api_key=47179f260df8d482f7b4ffd06257a9d1`,
+				},
+			];
+			// // Get logo of the selected movie
+			// const getItemLogo = async () => {
+			// 	let requests = urls.map((item) => fetch(item.url).then((response) => response.json()));
+			// 	Promise.all(requests).then((datas) => {
+			// 		datas.forEach((data, index, array) => {
+			// 			const logos = data.logos;
+			// 			let highestRating = Math.max(logos[index].vote_average);
+			// 			logos.forEach((logo, index, array) => {
+			// 				if (logo.vote_average === highestRating) {
+			// 					setItemLogo(logo);
+			// 				}
+			// 			});
+			// 		});
+			// 	});
+			// };
+			// getItemLogo();
+		}
 	}, [activeItem]);
 	const removeActiveItem = () => {
 		setIsOpen(false);
 		setTimeout(() => {
+			if (readmore) {
+				setReadmore(!readmore);
+			}
+			if (itemLogo) {
+				setItemLogo("");
+			}
 			setActiveItem("");
 		}, 350);
 	};
@@ -41,24 +72,47 @@ export const ModalComponent = ({ activeItem, setActiveItem }) => {
 											></button>
 										</div>
 									</header>
-									<div className="row py-5 text-center text-md-start">
+									<div className="row pt-4 py-5 text-center text-md-start">
 										<div className="col-lg-10 offset-lg-1">
 											<div className="row">
-												<div className="mx-auto col-4 col-md-4 col-lg-3 position-relative">
-													<div className="poster-wrapper">
-														<img draggable="false" className="w-100" src={`https://image.tmdb.org/t/p/w500/${activeItem.poster_path}`} alt={activeItem.title} />
+												<div className="mx-auto col-5 col-sm-4 col-xl-3 position-relative">
+													<div className="white-line">
+														<div className="poster-wrapper">
+															<img draggable="false" className="w-100" src={`https://image.tmdb.org/t/p/w500/${activeItem.poster_path}`} alt={activeItem.title} />
+														</div>
 													</div>
 												</div>
-												<div className="mt-4 mt-md-0 ps-md-5 col-md-8 col-lg-9">
+												<div className="mt-4 mt-md-0 ps-md-5 col-md-8 col-xl-9">
 													<h2 className="active-item--title fw-bold white">{activeItem.title}</h2>
+													{/* {itemLogo ? (
+														<div className="offset-2 col-8 offset-sm-3 col-sm-6 offset-md-0 col-md-8 col-xl-6">
+															<h2>
+																<img className="w-100" style={{ objectPosition: "left", objectFit: "contain" }} src={"https://www.themoviedb.org/t/p/original/" + itemLogo.file_path} alt={activeItem.title} />
+															</h2>
+														</div>
+													) : (
+														<h2 className="active-item--title fw-bold white">{activeItem.title}</h2>
+													)} */}
 													<div className="details-bar white" style={{ opacity: 0.75 }}>
 														<span className="white year-blip white-border rounded p-2 py-1">{activeItem.release_date.slice(0, 4)}</span>
 														<span className="mx-2">|</span>
 														{activeItem.genre_names.map((value, i) => (activeItem.genre_names[i + 1] ? <span key={activeItem.genre_ids[i]}>{value}, </span> : <span key={activeItem.genre_ids[i]}>{value} </span>))}
 													</div>
-													<p className="item--description white">{activeItem.overview}</p>
-													<div className="my-4">
-														<button className="transparent-bg white-border white rounded p-2 px-3 black-hover white-bg-hover">Watch trailer</button>
+													<p className={"m-0 item--description white" + (readmore ? " expanded" : "")}>{activeItem.overview}</p>
+													<p>
+														<span
+															onClick={() => {
+																setReadmore(!readmore);
+															}}
+															className="white read-more cursor-pointer"
+														>
+															<small>
+																<u>{readmore ? "Show less" : "Read more"}</u>
+															</small>
+														</span>
+													</p>
+													<div className="mt-5 header-buttons position-relative">
+														<button className="trailer-button transparent-bg white-border white rounded p-2 px-3 black-hover white-bg-hover">Watch trailer</button>
 													</div>
 												</div>
 											</div>

@@ -71,10 +71,25 @@ export const SplideCSS = styled.div`
 			backdrop-filter: blur(10px);
 		}
 	}
+	.title--bar {
+		pointer-events: none;
+	}
 	.splide__slide.is-active .title--container h6 {
 		animation: slideUp 0.25s cubic-bezier(0.77, 0, 0.175, 1) both 0.05s;
 	}
+	.splide__arrow {
+		opacity: 1 !important;
+		background: white !important;
+	}
+	.splide__arrow svg {
+		width: 13px !important;
+		fill: var(--skyblue) !important;
+	}
 	.title--container h6 {
+		pointer-events: none;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 		@media ${direction.minWidth} ${device.tablet} {
 			font-size: inherit;
 		}

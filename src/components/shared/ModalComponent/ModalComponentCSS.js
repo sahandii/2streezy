@@ -10,7 +10,8 @@ export const ModalComponentCSS = styled.div`
 		pointer-events:none;
 	}
 	.modal-component__wrapper {
-		transition: transform .35s var(--ease-out-quint) .1s;
+		transition: transform .35s var(--ease-out-quint) .1s, width .35s var(--ease-out-quint) 0s;
+		will-change: transform, width;
 		pointer-events:auto;
 		z-index:100;
 		position:fixed;
@@ -70,10 +71,16 @@ export const ModalComponentCSS = styled.div`
 			background-color: rgba(0, 0, 0, .6)
 		}
 	}
+	.header-buttons .trailer-button {
+		@media ${direction.minWidth} ${device.tablet} {
+			position:absolute;
+		}
+
+	}
 	.modal-component__wrapper .backdrop-header{
 		position:relative;
-		@media ${direction.maxWidth} ${device.tablet} {
-			height:100vh;
+		@media ${direction.minWidth} ${device.tablet} {
+			padding-bottom:2.5em!important;
 		}
 		&:after {
 			animation: fadeInBackdrop 3s linear 0s both;
@@ -118,8 +125,8 @@ export const ModalComponentCSS = styled.div`
 		visibility:visible;
 	}
 	.details-bar {
-		margin:2em 0;
-		font-size:.85rem;
+		margin: 1.25em 0 2em 0;
+    	font-size: .75rem;
 	}
 	.item--description {
 		font-weight:500;
@@ -127,7 +134,12 @@ export const ModalComponentCSS = styled.div`
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
-		/* truncate to 4 lines */
 		-webkit-line-clamp: 2;
+	}
+	.item--description.expanded {
+		overflow: inherit;
+		display: inherit;
+		-webkit-box-orient: inherit;
+		-webkit-line-clamp: inherit;
 	}
 `;
