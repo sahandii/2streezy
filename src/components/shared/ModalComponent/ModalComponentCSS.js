@@ -102,6 +102,9 @@ export const ModalComponentCSS = styled.div`
 		box-shadow: -20px 0 60px rgba(0, 0, 0, 0.1);
 
 	}
+	span.read-more {
+		font-weight:700;
+	}
 	.backdrop{
 		opacity:0;
 		visibility:hidden;

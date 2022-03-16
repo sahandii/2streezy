@@ -1,34 +1,54 @@
 import { ModalComponentCSS } from "./ModalComponentCSS";
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export const ModalComponent = ({ activeItem, setActiveItem }) => {
+	const description = useRef();
+	const readmoreBtn = useRef();
 	const [isOpen, setIsOpen] = useState(false);
 	const [readmore, setReadmore] = useState(false);
 	const [itemLogo, setItemLogo] = useState();
 	useEffect(() => {
 		activeItem ? setIsOpen(true) : setIsOpen(false);
+		// if (activeItem) {
+		// 	const urls = [
+		// 		{
+		// 			url: `https://api.themoviedb.org/3/movie/${activeItem.id}/images?&language=en-US&append_to_response=images&include_image_language=null,en&api_key=47179f260df8d482f7b4ffd06257a9d1`,
+		// 		},
+		// 	];
+		// 	// Get logo of the selected movie
+		// 	const getItemLogo = async () => {
+		// 		let requests = urls.map((item) => fetch(item.url).then((response) => response.json()));
+		// 		Promise.all(requests).then((datas) => {
+		// 			datas.forEach((data, index, array) => {
+		// 				const logos = data.logos;
+		// 				let highestRating = Math.max(logos[index].vote_average);
+		// 				logos.forEach((logo, index, array) => {
+		// 					if (logo.vote_average === highestRating) {
+		// 						setItemLogo(logo);
+		// 					}
+		// 				});
+		// 			});
+		// 		});
+		// 	};
+		// 	getItemLogo();
+		// }
+
 		if (activeItem) {
-			const urls = [
-				{
-					url: `https://api.themoviedb.org/3/movie/${activeItem.id}/images?&language=en-US&append_to_response=images&include_image_language=null,en&api_key=47179f260df8d482f7b4ffd06257a9d1`,
+			const checkOverflow = () => {
+				if (description.current.offsetHeight < description.current.scrollHeight || description.current.offsetWidth < description.current.scrollWidth) {
+					readmoreBtn.current.style.display = "inline-block";
+				} else {
+					readmoreBtn.current.style.display = "none";
+				}
+			};
+			window.addEventListener(
+				"resize",
+				() => {
+					checkOverflow();
 				},
-			];
-			// // Get logo of the selected movie
-			// const getItemLogo = async () => {
-			// 	let requests = urls.map((item) => fetch(item.url).then((response) => response.json()));
-			// 	Promise.all(requests).then((datas) => {
-			// 		datas.forEach((data, index, array) => {
-			// 			const logos = data.logos;
-			// 			let highestRating = Math.max(logos[index].vote_average);
-			// 			logos.forEach((logo, index, array) => {
-			// 				if (logo.vote_average === highestRating) {
-			// 					setItemLogo(logo);
-			// 				}
-			// 			});
-			// 		});
-			// 	});
-			// };
-			// getItemLogo();
+				true,
+			);
+			checkOverflow();
 		}
 	}, [activeItem]);
 	const removeActiveItem = () => {
@@ -98,9 +118,12 @@ export const ModalComponent = ({ activeItem, setActiveItem }) => {
 														<span className="mx-2">|</span>
 														{activeItem.genre_names.map((value, i) => (activeItem.genre_names[i + 1] ? <span key={activeItem.genre_ids[i]}>{value}, </span> : <span key={activeItem.genre_ids[i]}>{value} </span>))}
 													</div>
-													<p className={"m-0 item--description white" + (readmore ? " expanded" : "")}>{activeItem.overview}</p>
+													<p ref={description} className={"m-0 item--description white" + (readmore ? " expanded" : "")}>
+														{activeItem.overview}
+													</p>
 													<p>
 														<span
+															ref={readmoreBtn}
 															onClick={() => {
 																setReadmore(!readmore);
 															}}
