@@ -31,7 +31,7 @@ const App = () => {
 	return (
 		<>
 			<GlobalStyles />
-			<div style={{ paddingTop: pageOffset, height: "2000px" }} className="wrapper">
+			<div style={{ paddingTop: pageOffset }} className="wrapper">
 				<BrowserRouter>
 					<Navigation pageOffset={{ set: setPageOffset }} />
 					<Routes>
