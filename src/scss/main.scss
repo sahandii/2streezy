@@ -35,3 +35,7 @@ body {
 .overflow-y-hidden {
 	overflow-y: hidden !important;
 }
+.no-underline,
+.no-underline * {
+	text-decoration: none !important;
+}
