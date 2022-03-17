@@ -1,8 +1,11 @@
+import { NavigationCSS } from "./NavigationCSS";
 import { useState, useRef, useEffect } from "react";
 import "react-router";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as StreezyLogo } from "../../../images/str-logo.svg";
 import { ReactComponent as SettingsIcon } from "./img/settings.svg";
+import { ReactComponent as BookmarkSymbol } from "../../../images/symbols/bookmark.svg";
+
 // import { ReactComponent as UserIcon } from "./img/user.svg";
 
 export const Navigation = ({ pageOffset }) => {
@@ -30,29 +33,36 @@ export const Navigation = ({ pageOffset }) => {
 		handleScroll();
 	}, [navHeight]);
 	return (
-		<nav ref={navEl} className={"navbar" + (scrolled ? " sscrolled" : "")}>
-			<div className="container-fluid d-flex justify-content-between align-items-center">
-				<div className="navbar-left">
-					<Link style={location.pathname === "/" ? { pointerEvents: "none" } : { pointerEvents: "auto" }} to="/">
-						<StreezyLogo width="120" height="100%" draggable="false" />
-					</Link>
-				</div>
-				<div className="navbar-center">
-					{/* <ul className="m-0 p-0 ls-none">
+		<NavigationCSS>
+			<nav ref={navEl} className={"navbar" + (scrolled ? " scrolled" : "")}>
+				<div className="container-fluid d-flex justify-content-between align-items-center">
+					<div className="navbar-left">
+						<Link style={location.pathname === "/" ? { pointerEvents: "none" } : { pointerEvents: "auto" }} to="/">
+							<StreezyLogo width="120" height="100%" draggable="false" />
+						</Link>
+					</div>
+					<div className="navbar-center">
+						{/* <ul className="m-0 p-0 ls-none">
 						<li>Movies</li>
 						<li>Shows</li>
 					</ul> */}
+					</div>
+					<div className="navbar-right">
+						<ul className="m-0 p-0 ls-none d-inline-flex">
+							<li>
+								<NavLink to="/watchlist">
+									<BookmarkSymbol className="me-3" width="18" style={{ fill: "#333" }} draggable="false" />
+								</NavLink>
+							</li>
+							<li>
+								<NavLink to="/settings">
+									<SettingsIcon draggable="false" />
+								</NavLink>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div className="navbar-right">
-					<ul className="m-0 p-0 ls-none">
-						<li>
-							<NavLink to="/settings">
-								<SettingsIcon draggable="false" />
-							</NavLink>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+			</nav>
+		</NavigationCSS>
 	);
 };

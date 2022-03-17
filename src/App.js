@@ -1,6 +1,6 @@
 // import { useState, useRef, useEffect } from "react";
 import "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigation } from "./components/shared/Navigation/Navigation";
 import MoviesPage from "./pages/MoviesPage/MoviesPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
@@ -20,10 +20,18 @@ const App = () => {
 		--ease-in-out-quint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
 	  }
 	`;
+	useEffect(() => {
+		if (activeItem) {
+			document.querySelector("html").style.overflowY = "hidden";
+		} else {
+			document.querySelector("html").style.overflowY = "";
+		}
+	}, [activeItem]);
+
 	return (
 		<>
 			<GlobalStyles />
-			<div style={{ paddingTop: pageOffset }} className="wrapper">
+			<div style={{ paddingTop: pageOffset, height: "2000px" }} className="wrapper">
 				<BrowserRouter>
 					<Navigation pageOffset={{ set: setPageOffset }} />
 					<Routes>

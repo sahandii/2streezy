@@ -1,12 +1,13 @@
+import { SettingsPageCSS } from "./SettingsPageCSS";
 import React, { Component } from "react";
 
 export default class SettingsPage extends Component {
 	render() {
 		return (
-			<>
-				<div className="container-fluid my-5">
+			<SettingsPageCSS>
+				<div className="container my-5">
 					<div className="row">
-						<div className="col-2">
+						<div className="col-1">
 							<Avatar />
 						</div>
 						<div className="col-10">
@@ -14,17 +15,15 @@ export default class SettingsPage extends Component {
 						</div>
 					</div>
 				</div>
-			</>
+			</SettingsPageCSS>
 		);
 	}
 }
 
 const Avatar = () => {
 	return (
-		<>
-			<div className="badge-container ratio ratio-1x1">
-				<img src="..jpg" alt="Avatar" />
-			</div>
-		</>
+		<div className="badge-container">
+			<img className="d-block w-100" src="https://i.pravatar.cc/1000" alt="Avatar" />
+		</div>
 	);
 };
