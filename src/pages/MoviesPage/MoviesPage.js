@@ -22,6 +22,10 @@ const MoviesPage = ({ activeItem, setActiveItem }) => {
 				category: "genre",
 				url: "https://api.themoviedb.org/3/genre/movie/list?api_key=47179f260df8d482f7b4ffd06257a9d1&language=en-US",
 			},
+			{
+				category: "top_rated",
+				url: "https://api.themoviedb.org/3/movie/top_rated?api_key=47179f260df8d482f7b4ffd06257a9d1&language=en-US&region=US",
+			},
 		];
 		const fetchMovieData = async () => {
 			let requests = urls.map((item) => fetch(item.url).then((response) => response.json()));
@@ -67,6 +71,7 @@ const MoviesPage = ({ activeItem, setActiveItem }) => {
 			<main id="movies">
 				<SliderComponent setActiveItem={setActiveItem} category={movieData.upcoming} title="Releasing soon" />
 				<SliderComponent setActiveItem={setActiveItem} category={movieData.popular} title="Popular movies" />
+				<SliderComponent setActiveItem={setActiveItem} category={movieData.top_rated} title="Top rated" />
 				<ModalComponent setActiveItem={setActiveItem} activeItem={activeItem} />
 			</main>
 		</>

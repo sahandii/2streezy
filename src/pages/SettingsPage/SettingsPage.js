@@ -6,21 +6,21 @@ export default class SettingsPage extends Component {
 		return (
 			<SettingsPageCSS>
 				<div className="settings-page container-fluid">
-					<div style={{ height: "100vh" }} className="row rounded overflow-hidden">
+					<div className="settings-page--wrapper row rounded overflow-hidden">
 						{/* Left panel */}
-						<div className="col-lg-8 settings-page--settings-column white-bg p-3 order-1 order-lg-0">
+						<div className="col-md-8 settings-page--settings-column white-bg p-3 order-1 order-md-0">
 							<div className="row p-3">
-								<h6 style={{ color: "var(--bs-gray-500)" }} className="m-0 text-uppercase fw-normal">
+								<h6 style={{ color: "var(--bs-gray-500)" }} className="m-0 text-uppercase fw-bold">
 									General settings
 								</h6>
 								<div className="settings-item">
-									<h5 className="settings-item--name m-0">Language</h5>
+									<h6 className="settings-item--name m-0">Language</h6>
 									<div className="settings-item--option">
 										<p className="m-0">English</p>
 									</div>
 								</div>
 								<div className="settings-item">
-									<h5 className="m-0">Dark mode</h5>
+									<h6 className="settings-item--name m-0">Dark mode</h6>
 									<div className="settings-item--option">
 										<ToggleComponent />
 									</div>
@@ -29,16 +29,16 @@ export default class SettingsPage extends Component {
 							</div>
 						</div>
 						{/* Right panel */}
-						<div className="col-lg-4 settings-page--user-column skyblue-bg p-3 order-0 o">
+						<div className="col-md-4 settings-page--user-column skyblue-bg p-3 order-0 o">
 							<aside className="skyblue-bg p-3 row align-items-center">
 								{/* User details */}
 								<div className="row d-flex align-items-center">
-									<div className="col-3 col-lg-5 col-xl-4">
+									<div className="col-3 col-md-5 col-xl-4">
 										<Avatar />
 									</div>
-									<div className="mt-lg-3 col-9 col-lg-12 col-xl-8">
+									<div className="mt-md-3 col-9 col-md-12 col-xl-8">
 										<div className="user-details">
-											<h2 className="user-details--greetings white m-0">Hi streamer! 👋</h2>
+											<h3 className="text-nowrap user-details--greetings white m-0">User3217981</h3>
 											<h6 className="fw-light white">
 												<small>Member since 2022</small>
 											</h6>

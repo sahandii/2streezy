@@ -22,8 +22,8 @@ const ToggleComponentCSS = styled.div`
 		transition: 0.1s linear 0s;
 		transition-property: background-color;
 		will-change: background-color;
-		width: 5em;
-		height: 2.5em;
+		width: 4em;
+		height: 2em;
 		background-color: var(--bs-gray-400);
 		border-radius: 99em;
 		position: relative;
@@ -55,8 +55,8 @@ const ToggleComponentCSS = styled.div`
 		left: 0;
 		transform: translate3d(0.25em, -50%, 0);
 		background-color: white;
-		width: 2em;
-		height: 2em;
+		width: 1.5em;
+		height: 1.5em;
 		border-radius: 99em;
 	}
 `;
