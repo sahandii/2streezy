@@ -3,6 +3,7 @@ import "react-router";
 import { SliderComponent } from "../../components/shared/SliderComponent/SliderComponent";
 import { ModalComponent } from "../../components/shared/ModalComponent/ModalComponent";
 import { useState, useEffect } from "react";
+import styled from "styled-components";
 
 const MoviesPage = ({ activeItem, setActiveItem }) => {
 	// TMDB API load
@@ -67,15 +68,21 @@ const MoviesPage = ({ activeItem, setActiveItem }) => {
 		fetchMovieData();
 	}, []);
 	return (
-		<>
+		<MoviesPageCSS>
 			<main id="movies">
 				<SliderComponent setActiveItem={setActiveItem} category={movieData.upcoming} title="Releasing soon" />
 				<SliderComponent setActiveItem={setActiveItem} category={movieData.popular} title="Popular movies" />
 				<SliderComponent setActiveItem={setActiveItem} category={movieData.top_rated} title="Top rated" />
 				<ModalComponent setActiveItem={setActiveItem} activeItem={activeItem} />
 			</main>
-		</>
+		</MoviesPageCSS>
 	);
 };
+
+const MoviesPageCSS = styled.div`
+	#movies {
+		overflow: hidden;
+	}
+`;
 
 export default MoviesPage;
