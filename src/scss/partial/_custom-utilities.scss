@@ -1,0 +1,16 @@
+$utilities: map-merge(
+	$utilities,
+	(
+		"z-index": (
+			property: z-index,
+			class: zi,
+			values: (
+				-1,
+				0,
+				1,
+				10,
+				99,
+			),
+		),
+	)
+);

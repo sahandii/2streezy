@@ -51,7 +51,7 @@ export const Navigation = ({ pageOffset }) => {
 						<ul className="m-0 p-0 ls-none d-inline-flex">
 							<li>
 								<NavLink to="/watchlist">
-									<BookmarkSymbol className="me-3" width="18" height="auto" style={{ fill: "#333" }} draggable="false" />
+									<BookmarkSymbol className="me-3" width="18" height="100%" style={{ fill: "#333" }} draggable="false" />
 								</NavLink>
 							</li>
 							<li>

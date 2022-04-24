@@ -70,7 +70,7 @@ export const ModalComponent = ({ activeItem, setActiveItem }) => {
 					{activeItem ? (
 						<>
 							<div style={{ backgroundImage: `url('https://image.tmdb.org/t/p/w1280${activeItem.backdrop_path}')` }} className="backdrop-header container-fluid py-4 px-3 px-md-5">
-								<div className="modal-content">
+								<div className="modal-component__content">
 									<header className="row header-nav">
 										<div className="d-flex align-items-center header-left col-6">
 											<button

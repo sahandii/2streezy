@@ -25,7 +25,7 @@ export const ModalComponentCSS = styled.div`
 			width:calc(100vw - 200px);
 		}
 	}
-	.modal-content{
+	.modal-component__content{
 		position:relative;
 		z-index:2;
 	}

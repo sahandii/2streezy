@@ -47,7 +47,7 @@ export function SliderComponent({ category, items, title, setActiveItem }) {
 											<h6 className="title fw-normal white m-0 mt-1">
 												{item.title} <span className="year-blip white-border rounded p-1 ms-1">{item.release_date.slice(0, 4)}</span>
 											</h6>
-											<ArrowRight width="15" height="100%" />
+											<ArrowRight style={{ color: "white" }} width="15" height="100%" />
 										</div>
 									</div>
 									<div className="backdrop-wrapper ratio ratio-16x9">

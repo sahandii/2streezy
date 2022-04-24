@@ -65,7 +65,7 @@ export const SplideCSS = styled.div`
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: rgba(64, 134, 204, 0.65);
+			background: rgba(14, 110, 253, 0.5);
 			border-bottom-right-radius: ${borderRadius};
 			border-bottom-left-radius: ${borderRadius};
 			backdrop-filter: blur(10px);
